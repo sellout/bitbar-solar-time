@@ -9,9 +9,13 @@
 # <bitbar.image>https://github.com/XanderLeaDaren/bitbar-solar-time/blob/master/bitbar_solar-time.jpg?raw=true</bitbar.image>
 # <bitbar.dependencies>python</bitbar.dependencies>
 # <bitbar.abouturl>https://github.com/XanderLeaDaren/bitbar-solar-time</bitbar.abouturl>
+#
+# <bitbar.var>string(VAR_PREFIX="☀️ "): Text to display to the left of the time.</bitbar.var>
+# <bitbar.var>boolean(VAR_DISPLAY_SECONDS=true): Display the time with seconds.</bitbar.var>
 
 import datetime
 from math import sin,pi
+import os
 import time
 import json
 import urllib
@@ -42,7 +46,14 @@ def print_information():
     eq_time = get_eq_time(day)
     sun_time = get_sun_time(today, pos, eq_time, tz)
 
-    print "☀️ " + sun_time.strftime('%H:%M:%S')
+    if os.environ.get('VAR_DISPLAY_SECONDS') == 'false':
+        time_fmt = '%H:%M'
+    else:
+        time_fmt = '%H:%M:%S'
+    prefix = os.environ.get('VAR_PREFIX')
+    if prefix is None:
+        prefix = "☀️ "
+    print prefix + sun_time.strftime(time_fmt)
     print "---"
     print "Time Zone Offset: " + str(tz / 3600) + " h"
     print "Position Offset: %.3f" % pos + " min"
