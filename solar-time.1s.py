@@ -10,8 +10,8 @@
 # <bitbar.dependencies>python</bitbar.dependencies>
 # <bitbar.abouturl>https://github.com/XanderLeaDaren/bitbar-solar-time</bitbar.abouturl>
 #
-# <bitbar.var>string(VAR_PREFIX="☀️ "): Text to display to the left of the time.</bitbar.var>
-# <bitbar.var>boolean(VAR_DISPLAY_SECONDS=true): Display the time with seconds.</bitbar.var>
+# <xbar.var>string(VAR_PREFIX="☀️ "): Text to display to the left of the time.</xbar.var>
+# <xbar.var>boolean(VAR_DISPLAY_SECONDS=true): Display the time with seconds.</xbar.var>
 
 import datetime
 from math import sin,pi
