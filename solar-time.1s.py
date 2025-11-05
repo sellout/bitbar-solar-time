@@ -40,8 +40,12 @@ def get_sun_time(today, pos, eq_time, tz):
 
 def print_information():
     today = datetime.datetime.now()
-    day = today.timetuple().tm_yday
-    tz = time.altzone
+    timetuple = today.timetuple()
+    day = timetuple.tm_yday
+    if timetuple.tm_isdst == 1:
+        tz = time.altzone
+    else:
+        tz = time.timezone
     pos = get_position()
     eq_time = get_eq_time(day)
     sun_time = get_sun_time(today, pos, eq_time, tz)
